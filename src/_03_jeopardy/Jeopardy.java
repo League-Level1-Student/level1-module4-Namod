@@ -28,20 +28,29 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.sun.xml.internal.messaging.saaj.packaging.mime.Header;
+
+import sun.net.www.content.audio.x_aiff;
+
 
 /* Check out the Jeopardy Handout to see what the end result should look like: http://bit.ly/1bvnvd4 */
 
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
+	private JButton thirdButton, fourthButton, fifthButton;
 	private JPanel quizPanel;
 	private int score = 0;
 	private JLabel scoreBox = new JLabel("0");
 	private int buttonCount = 0;
 	private AudioClip sound;
+	String firstQuestion = " what is the value of 1?";
+	String secondQuestion = " what is the value of 2?";
+	String thirdQuestion = " what is the value of 3?";
+	String fourthQuestion = " what is the value of 4?";
+	String fifthQuestion = " what is the value of 5?";
 
-
+	
 
 	public void run() {
 		JFrame frame = new JFrame();
@@ -50,29 +59,41 @@ public class Jeopardy implements ActionListener {
 		frame.setLayout(new BorderLayout());
 
 		// 1. Make the frame show up
-
+		frame.setVisible(true);
 		// 2. Give your frame a title
-
+		frame.setTitle("Title");
 		// 3. Create a JPanel variable to hold the header using the createHeader method
+		JPanel panel = createHeader("Science & Tech");
 
 		// 4. Add the header component to the quizPanel
-
+		quizPanel.add(panel);
 		// 5. Add the quizPanel to the frame
-
+		frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
-
+		JButton first = createButton("$1000");
 		// 7. Add the firstButton to the quizPanel
+		quizPanel.add(first);
 
 		// 8. Write the code to complete the createButton() method below. Check that your
 		// game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
 
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
-
+		JButton second = createButton("$800");
+		JButton third = createButton("$600");
+		JButton fourth = createButton("$400");
+		JButton fifth = createButton("$200");
 		// 10. Add the secondButton to the quizPanel
-
+		quizPanel.add(second);
+		quizPanel.add(third);
+		quizPanel.add(fourth);
+		quizPanel.add(fifth);
 		// 11. Add action listeners to the buttons (2 lines of code)
-
+		first.addActionListener(this);
+		second.addActionListener(this);
+		third.addActionListener(this);
+		fourth.addActionListener(this);
+		fifth.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
 
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
@@ -81,7 +102,6 @@ public class Jeopardy implements ActionListener {
 		 * [optional] Use the showImage or playSound methods when the user answers a
 		 * question
 		 */		
-		
 		frame.pack();
 		quizPanel.setLayout(new GridLayout(buttonCount + 1, 3));
 		frame.add(makeScorePanel(), BorderLayout.NORTH);
@@ -93,14 +113,14 @@ public class Jeopardy implements ActionListener {
 	private JButton createButton(String dollarAmount) {
 		
 		// Create a new JButton
-
+		JButton button = new JButton();
 		// Set the text of the button to the dollarAmount
-
-		// Increment the buttonCount (this should make the layout vertical)
-
+		button.setText(dollarAmount);
+		// Increment the buttonCount (this should make the layout vertical)type name = new type();
+		buttonCount +=1;
 		// Return your new button instead of the temporary button
 
-		return new JButton("temporary button");
+		return button;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -110,9 +130,12 @@ public class Jeopardy implements ActionListener {
 
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
-
+		if(buttonPressed == firstButton) {
+			askQuestion(firstQuestion, "1", 1000);
+			
+		}
 			// Call the askQuestion() method
- 
+			
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
 
 		// If the buttonPressed was the secondButton

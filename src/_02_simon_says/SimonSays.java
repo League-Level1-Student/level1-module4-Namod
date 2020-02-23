@@ -24,12 +24,12 @@ import javafx.scene.input.KeyCode;
 
 import java.io.IOException;
 
-public class SimonSays extends KeyAdapter {
-
+public class SimonSays implements KeyListener{
+	int score;
 	HashMap<Integer, String> images = new HashMap<Integer, String>();
-	private int imageIndex;
-	private int tries = 0;
-	private boolean simonSays = true;
+	int imageIndex;
+	int tries = 0;
+	boolean SimonSays = true;
 	Date timeAtStart;
 
 	// Complete steps 1 - 7 before you test
@@ -39,10 +39,10 @@ public class SimonSays extends KeyAdapter {
 	public void run() {
 		// 2. Add the four images that match keyboard keys like this:
 		// images.put(new Integer(KeyEvent.VK_UP), "up.jpg");
-		String i = images.put(new Integer(KeyEvent.VK_UP), "up.jpg");
-		String ii = images.put(new Integer(KeyEvent.VK_DOWN), "down.jpg");
-		String iii = images.put(new Integer(KeyEvent.VK_LEFT), "left.jpg");
-		String iv = images.put(new Integer(KeyEvent.VK_RIGHT), "right.jpg");
+		String up = images.put(new Integer(KeyEvent.VK_UP), "up.jpg");
+		String down = images.put(new Integer(KeyEvent.VK_DOWN), "down.jpg");
+		String left = images.put(new Integer(KeyEvent.VK_LEFT), "left.jpg");
+		String right = images.put(new Integer(KeyEvent.VK_RIGHT), "right.jpg");
 		// 3. Use a JOptionPane to tell the user the rules: "Press the matching
 		// key when
 		JOptionPane.showMessageDialog(null, "Press the matching key when Simon says");
@@ -57,15 +57,17 @@ public class SimonSays extends KeyAdapter {
 
 	public void keyPressed(KeyEvent e) {
 		// 15. Make a points variable to track the score.
-		int score;
-		// 16. If the keyCode matches the imageIndex and "Simon says"
+		
+		// 16. If the keyCode matches the imageIndex and "		
+	
 			if(e.getKeyCode() == imageIndex){
-				
+			
 			
 		// 17. Increase the value of score
-		score + = 1;
+		score += 1;
 		// 18. Use the speak method to tell the user they were correct
 		speak("correct");
+		System.out.println(score);
 	}
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't
 		// say..."
@@ -73,11 +75,13 @@ public class SimonSays extends KeyAdapter {
 			
 			
 		// 20. Increase the value of score
-				score - = 1;
-		// 21. Use the sp eak method to tell the user they were correct
+				score -= 1;
+		// 21. Use the speak method to tell the user they were correct
 				speak("incorrect");
 		// 22. Increment tries by 1
-				tries + = 1;
+				tries += 1;
+				System.out.println(score);
+				System.out.println(tries);
 	}
 		// 25. If tries is greater than 9 (or however many you want)...
 			if ( tries > 9) {
