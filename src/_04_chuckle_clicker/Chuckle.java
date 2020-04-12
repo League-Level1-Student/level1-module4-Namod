@@ -12,34 +12,38 @@ public class Chuckle implements ActionListener {
 	JButton button1 = new JButton();
 	JButton button2 = new JButton();
 void makeButtons() {
-	// TODO Auto-generated method stu
+	// TODO Auto-generated method stub
 
 	frame.add(panel);
-	frame.add(button1);
-	frame.add(button2);
+	panel.add(button1);
+	panel.add(button2);
+	//frame.add(button1);
+	//frame.add(button2);
 	frame.setTitle("Chuckle Clicker");
 	button1.setText("Joke");
 	button2.setText("Punchline");
 	button1.addActionListener(this);
 	button2.addActionListener(this);
-	frame.pack();
 	frame.setVisible(true);
+	frame.pack();
+	
 	
 }
 
-@SuppressWarnings("unlikely-arg-type")
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
-e.getSource();
-	if(e.equals(button1)) {
+JButton buttonClicked = (JButton)e.getSource();
+	if(buttonClicked.equals(button1)) {
 		JOptionPane.showMessageDialog(null, "When does a joke become a 'Dad Joke'?");
-		{
-	if(e.equals(button2)) {	
-			JOptionPane.showMessageDialog(null, "When the punchline becomes A-Parent");
-		}
-		}
+		System.out.println("Button1 Pressed");
 	}
+	 if (buttonClicked.equals(button2)) {	
+			JOptionPane.showMessageDialog(null, "When the punchline becomes A-Parent");
+			System.out.println("Button2 Pressed");
+	 }
+		}
+	
 		
 }
-}
+
