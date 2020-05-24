@@ -66,7 +66,7 @@ public class BookOfIllusions extends MouseAdapter {
 	public JLabel loadImageFromComputer(String fileName) {
 		URL imageURL = getClass().getResource(fileName);
 		Icon icon = new ImageIcon(imageURL);
-		return new JLabel(icon);
+		return new JLabel(icon); 
 	}
 
 }
