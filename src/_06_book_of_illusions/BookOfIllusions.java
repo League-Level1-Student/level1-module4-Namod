@@ -19,6 +19,8 @@ public class BookOfIllusions extends MouseAdapter {
 
 	// 1. Make a JFrame variable and initialize it using "new JFrame()"
 		JFrame JFrame = new JFrame();
+		String one = "book.jpg";
+		String two = "book1.jpg";
 		
 	public void run() {
 		// 2. make the frame visible
@@ -26,7 +28,7 @@ public class BookOfIllusions extends MouseAdapter {
 		// 3. set the size of the frame
 		JFrame.setSize(null);
 		// 4. find 2 images and save them to your project’s default package
-	
+		
 		// 5. make a variable to hold the location of your image. e.g. "illusion.jpg"
 		
 		// 6. create a variable of type "JLabel" but don’t initialize it yet
